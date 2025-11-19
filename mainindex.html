@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSSN - Summit University Offa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #008000;
+            --secondary-color: #ffffff;
+            --accent-color: #006400;
+            --text-color: #333333;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #555555;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--secondary-color);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            margin: 5px;
+            transition: var(--transition);
+        }
+
+        /* Hero Slider Styles */
+        .hero {
+            position: relative;
+            height: 80vh;
+            overflow: hidden;
+        }
+
+        .slider {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #000;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img,
+        .slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-controls {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+        }
+
+        .slider-dots {
+            display: flex;
+            margin: 0 20px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            margin: 0 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            background-color: var(--secondary-color);
+        }
+
+        .slider-arrow {
+            color: var(--secondary-color);
+            font-size: 24px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-arrow:hover {
+            color: var(--primary-color);
+        }
+
+        /* Mission and Vision Styles */
+        .mission-vision-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .mission, .vision {
+            background-color: var(--light-gray);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .mission:hover, .vision:hover {
+            transform: translateY(-5px);
+        }
+
+        .mission h3, .vision h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Gallery Styles */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 200px;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .view-gallery-btn {
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Contact Form Styles */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--light-gray);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 128, 0, 0.2);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 15px;
+        }
+
+        .footer-about p {
+            margin-bottom: 20px;
+        }
+
+        .footer-links h3,
+        .footer-contact h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-links h3::after,
+        .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a {
+            transition: var(--transition);
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--light-gray);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+        }
+
+        .social-icons {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background-color: var(--secondary-color);
+            width: 90%;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transform: translateY(-50px);
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-size: 1.5rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--secondary-color);
+            font-size: 24px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .modal-step {
+            display: none;
+        }
+
+        .modal-step.active {
+            display: block;
+        }
+
+        .bank-details {
+            background-color: var(--light-gray);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .bank-detail-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .bank-detail-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .copy-btn {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .copy-btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        /* Success Message */
+        .success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 4px;
+            box-shadow: var(--shadow);
+            z-index: 3000;
+            transform: translateX(150%);
+            transition: transform 0.5s ease;
+        }
+
+        .success-message.show {
+            transform: translateX(0);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background-color: var(--secondary-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 40px;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 0 0 30px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active div:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger.active div:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active div:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .hero {
+                height: 60vh;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .mission, .vision {
+                padding: 20px;
+            }
+
+            .contact-form {
+                padding: 20px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .modal {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <img src="https://via.placeholder.com/150x50/008000/FFFFFF?text=SUMMIT+UNI" alt="Summit University Logo" class="logo">
+                <img src="https://via.placeholder.com/150x50/FFFFFF/008000?text=MSSN" alt="MSSN Logo" class="logo">
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#mission">Mission</a></li>
+                    <li><a href="#vision">Vision</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="registration.html" class="btn">Register</a></li>
+                </ul>
+                <div class="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Slider -->
+    <section class="hero" id="home">
+        <div class="slider">
+            <div class="slide active">
+                <img src="https://via.placeholder.com/1200x600/008000/FFFFFF?text=MSSN+Activity+1" alt="MSSN Activity 1">
+            </div>
+            <div class="slide">
+                <img src="https://via.placeholder.com/1200x600/006400/FFFFFF?text=MSSN+Activity+2" alt="MSSN Activity 2">
+            </div>
+            <div class="slide">
+                <video muted autoplay loop>
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-group-of-students-on-a-university-campus-45353-large.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="slide">
+                <img src="https://via.placeholder.com/1200x600/008000/FFFFFF?text=MSSN+Activity+3" alt="MSSN Activity 3">
+            </div>
+            <div class="slide">
+                <video muted autoplay loop>
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-students-walking-on-a-university-campus-45295-large.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <div class="slider-controls">
+            <div class="slider-arrow prev">&#10094;</div>
+            <div class="slider-dots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <div class="slider-arrow next">&#10095;</div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="section" id="mission">
+        <div class="container">
+            <h2 class="section-title">Our Mission</h2>
+            <div class="mission-vision-container">
+                <div class="mission">
+                    <h3>Mission Statement</h3>
+                    <p>To establish an Islamic society where members can practice Islam in its entirety, promote unity among Muslims, and contribute positively to the development of Summit University Offa and the society at large through educational, religious, and social activities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="section" id="vision">
+        <div class="container">
+            <h2 class="section-title">Our Vision</h2>
+            <div class="mission-vision-container">
+                <div class="vision">
+                    <h3>Vision Statement</h3>
+                    <p>To be a leading MSSN branch that produces morally upright, academically sound, and socially responsible Muslim students who will serve as agents of positive change in the university community and beyond.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x200/008000/FFFFFF?text=Event+1" alt="Event 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x200/006400/FFFFFF?text=Event+2" alt="Event 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x200/008000/FFFFFF?text=Event+3" alt="Event 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x200/006400/FFFFFF?text=Event+4" alt="Event 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x200/008000/FFFFFF?text=Event+5" alt="Event 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x200/006400/FFFFFF?text=Event+6" alt="Event 6">
+                </div>
+            </div>
+            <a href="#" class="btn view-gallery-btn">View Full Gallery</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" class="form-control" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <img src="https://via.placeholder.com/150x50/FFFFFF/008000?text=MSSN+SUMMIT" alt="MSSN Logo" class="footer-logo">
+                    <p>The Muslim Students' Society of Nigeria (MSSN), Summit University Offa branch, is dedicated to fostering Islamic values and unity among Muslim students on campus.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">FB</a>
+                        <a href="#" class="social-icon">TW</a>
+                        <a href="#" class="social-icon">IG</a>
+                        <a href="#" class="social-icon">YT</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#mission">Mission</a></li>
+                        <li><a href="#vision">Vision</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="registration.html">Register</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <p>Summit University Offa, Kwara State, Nigeria</p>
+                    <p>Email: mssn@summituniversity.edu.ng</p>
+                    <p>Phone: +234 123 456 7890</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 MSSN Summit University Offa. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Pay MSSN Due Button -->
+    <div class="pay-due-btn-container" style="position: fixed; bottom: 20px; right: 20px;">
+        <button class="btn" id="payDueBtn">Pay MSSN Due</button>
+    </div>
+
+    <!-- Modal for Payment -->
+    <div class="modal-overlay" id="paymentModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Pay MSSN Due</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-step active" id="step1">
+                    <h3>Step 1: Enter Your Details</h3>
+                    <form id="paymentForm">
+                        <div class="form-group">
+                            <label for="payName">Full Name</label>
+                            <input type="text" id="payName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="payMatric">Matric Number</label>
+                            <input type="text" id="payMatric" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="payEmail">Email Address</label>
+                            <input type="email" id="payEmail" class="form-control" required>
+                        </div>
+                        <button type="button" class="btn" id="proceedBtn">Proceed</button>
+                    </form>
+                </div>
+                <div class="modal-step" id="step2">
+                    <h3>Step 2: Bank Details</h3>
+                    <div class="bank-details">
+                        <div class="bank-detail-item">
+                            <span>Bank Name:</span>
+                            <span>First Bank Nigeria</span>
+                        </div>
+                        <div class="bank-detail-item">
+                            <span>Account Name:</span>
+                            <span>MSSN Summit University Offa</span>
+                        </div>
+                        <div class="bank-detail-item">
+                            <span>Account Number:</span>
+                            <span>0000000000</span>
+                        </div>
+                    </div>
+                    <button class="btn copy-btn" id="copyBtn">Copy Account Number</button>
+                    <div class="modal-footer">
+                        <button class="btn" id="backBtn">Back</button>
+                        <button class="btn" id="doneBtn">Done</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage">
+        <p>Form submitted successfully!</p>
+    </div>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Slider Functionality
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const prevArrow = document.querySelector('.prev');
+        const nextArrow = document.querySelector('.next');
+        let currentSlide = 0;
+        let slideInterval;
+
+        // Initialize slider
+        function initSlider() {
+            // Start autoplay
+            slideInterval = setInterval(nextSlide, 5000);
+            
+            // Add event listeners for arrows
+            prevArrow.addEventListener('click', prevSlide);
+            nextArrow.addEventListener('click', nextSlide);
+            
+            // Add event listeners for dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    goToSlide(index);
+                });
+            });
+        }
+
+        function nextSlide() {
+            goToSlide((currentSlide + 1) % slides.length);
+        }
+
+        function prevSlide() {
+            goToSlide((currentSlide - 1 + slides.length) % slides.length);
+        }
+
+        function goToSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = n;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+            
+            // Reset autoplay timer
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        // Initialize slider when page loads
+        document.addEventListener('DOMContentLoaded', initSlider);
+
+        // Payment Modal Functionality
+        const payDueBtn = document.getElementById('payDueBtn');
+        const paymentModal = document.getElementById('paymentModal');
+        const closeModal = document.querySelector('.close-modal');
+        const proceedBtn = document.getElementById('proceedBtn');
+        const backBtn = document.getElementById('backBtn');
+        const doneBtn = document.getElementById('doneBtn');
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        const copyBtn = document.getElementById('copyBtn');
+        let modalTimeout;
+
+        // Open modal
+        payDueBtn.addEventListener('click', () => {
+            paymentModal.classList.add('active');
+            // Set timeout to auto-close modal after 1 minute
+            modalTimeout = setTimeout(() => {
+                closePaymentModal();
+            }, 60000); // 60 seconds
+        });
+
+        // Close modal
+        function closePaymentModal() {
+            paymentModal.classList.remove('active');
+            clearTimeout(modalTimeout);
+            // Reset to step 1
+            step1.classList.add('active');
+            step2.classList.remove('active');
+        }
+
+        closeModal.addEventListener('click', closePaymentModal);
+
+        // Proceed to step 2
+        proceedBtn.addEventListener('click', () => {
+            const name = document.getElementById('payName').value;
+            const matric = document.getElementById('payMatric').value;
+            const email = document.getElementById('payEmail').value;
+            
+            // Basic validation
+            if (name && matric && email) {
+                step1.classList.remove('active');
+                step2.classList.add('active');
+            } else {
+                alert('Please fill in all fields');
+            }
+        });
+
+        // Back to step 1
+        backBtn.addEventListener('click', () => {
+            step2.classList.remove('active');
+            step1.classList.add('active');
+        });
+
+        // Done button
+        doneBtn.addEventListener('click', closePaymentModal);
+
+        // Copy account number
+        copyBtn.addEventListener('click', () => {
+            const accountNumber = '0000000000';
+            navigator.clipboard.writeText(accountNumber).then(() => {
+                copyBtn.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyBtn.textContent = 'Copy Account Number';
+                }, 2000);
+            });
+        });
+
+        // Contact Form Validation
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Basic validation
+            if (name && email && message) {
+                // Show success message
+                successMessage.classList.add('show');
+                
+                // Hide success message after 3 seconds
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 3000);
+                
+                // Reset form
+                contactForm.reset();
+            } else {
+                alert('Please fill in all fields');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

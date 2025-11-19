@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - MSSN Summit University Offa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #008000;
+            --white: #ffffff;
+            --light-gold: #f5f5dc;
+            --light-gray: #f8f8f8;
+            --dark-gray: #333333;
+            --darker-gray: #1a1a1a;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-green);
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-green);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #006600;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: var(--light-gold);
+            color: var(--dark-gray);
+        }
+
+        .btn-secondary:hover {
+            background-color: #e5e5c3;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-light {
+            background-color: var(--light-gray);
+        }
+
+        /* Header and Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            margin-right: 1rem;
+        }
+
+        .back-home {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .back-home:hover {
+            color: var(--primary-green);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 2rem 0 5rem;
+        }
+
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            background: transparent;
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: var(--primary-green);
+            color: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            cursor: pointer;
+            background-color: var(--white);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item img,
+        .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img,
+        .gallery-item:hover video {
+            transform: scale(1.05);
+        }
+
+        .gallery-item .item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            color: var(--white);
+            padding: 1.5rem 1rem 1rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .item-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .item-type {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .video-thumbnail {
+            position: relative;
+        }
+
+        .video-thumbnail:after {
+            content: '\f04b';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--white);
+            background-color: rgba(0, 128, 0, 0.7);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .video-thumbnail:after {
+            background-color: var(--primary-green);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content img,
+        .lightbox-content video {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .lightbox-close:hover {
+            color: var(--light-gold);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-heading {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-heading:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-green);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-green);
+            transform: translateY(-3px);
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--light-gold);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+            
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .lightbox-prev {
+                left: 10px;
+            }
+            
+            .lightbox-next {
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: 3rem 0;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+            
+            .gallery-filters {
+                gap: 0.5rem;
+            }
+            
+            .filter-btn {
+                padding: 0.4rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .lightbox-content {
+                max-width: 95%;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <img src="https://via.placeholder.com/150x50/008000/ffffff?text=SUMMIT+UNIV" alt="Summit University Logo" class="logo">
+                <img src="https://via.placeholder.com/150x50/ffffff/008000?text=MSSN" alt="MSSN Logo" class="logo">
+            </div>
+            
+            <a href="index.html" class="back-home">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Home</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Gallery Section -->
+    <section class="section gallery-section">
+        <div class="container">
+            <h2>Our Gallery</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 2.5rem;">Explore moments from our events, activities, and community gatherings at MSSN Summit University Offa.</p>
+            
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All Media</button>
+                <button class="filter-btn" data-filter="image">Images</button>
+                <button class="filter-btn" data-filter="video">Videos</button>
+            </div>
+            
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Images -->
+                <div class="gallery-item" data-type="image">
+                    <img src="https://images.unsplash.com/photo-1565689228866-1f6a7a6d4a6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Islamic event">
+                    <div class="item-overlay">
+                        <h3>Annual Islamic Conference</h3>
+                        <p>Students gathering for knowledge and spiritual growth</p>
+                    </div>
+                    <div class="item-type">Image</div>
+                </div>
+                
+                <div class="gallery-item" data-type="image">
+                    <img src="https://images.unsplash.com/photo-1587132135057-bc3c0e6c2c98?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Quran study">
+                    <div class="item-overlay">
+                        <h3>Quran Study Session</h3>
+                        <p>Students engaged in deep study of the Holy Quran</p>
+                    </div>
+                    <div class="item-type">Image</div>
+                </div>
+                
+                <div class="gallery-item" data-type="image">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Community service">
+                    <div class="item-overlay">
+                        <h3>Community Outreach</h3>
+                        <p>MSSN members giving back to the local community</p>
+                    </div>
+                    <div class="item-type">Image</div>
+                </div>
+                
+                <div class="gallery-item" data-type="image">
+                    <img src="https://images.unsplash.com/photo-1511632765481-2d5d5d28b86d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Islamic conference">
+                    <div class="item-overlay">
+                        <h3>Islamic Seminar</h3>
+                        <p>Guest speaker delivering an inspiring talk</p>
+                    </div>
+                    <div class="item-type">Image</div>
+                </div>
+                
+                <div class="gallery-item" data-type="image">
+                    <img src="https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2067&q=80" alt="Mosque interior">
+                    <div class="item-overlay">
+                        <h3>Campus Mosque</h3>
+                        <p>Beautiful interior of our campus mosque</p>
+                    </div>
+                    <div class="item-type">Image</div>
+                </div>
+                
+                <div class="gallery-item" data-type="image">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Student discussion">
+                    <div class="item-overlay">
+                        <h3>Student Discussion</h3>
+                        <p>Engaging conversations about Islamic topics</p>
+                    </div>
+                    <div class="item-type">Image</div>
+                </div>
+                
+                <div class="gallery-item" data-type="image">
+                    <img src="https://images.unsplash.com/photo-1559028015-c12369d2d1e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Charity event">
+                    <div class="item-overlay">
+                        <h3>Charity Drive</h3>
+                        <p>Collecting donations for those in need</p>
+                    </div>
+                    <div class="item-type">Image</div>
+                </div>
+                
+                <div class="gallery-item" data-type="image">
+                    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Islamic art">
+                    <div class="item-overlay">
+                        <h3>Islamic Art Exhibition</h3>
+                        <p>Showcasing beautiful Islamic calligraphy and art</p>
+                    </div>
+                    <div class="item-type">Image</div>
+                </div>
+                
+                <div class="gallery-item" data-type="image">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Team meeting">
+                    <div class="item-overlay">
+                        <h3>Executive Meeting</h3>
+                        <p>Planning upcoming MSSN activities and events</p>
+                    </div>
+                    <div class="item-type">Image</div>
+                </div>
+                
+                <div class="gallery-item" data-type="image">
+                    <img src="https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Islamic books">
+                    <div class="item-overlay">
+                        <h3>Islamic Library</h3>
+                        <p>Our collection of Islamic literature and resources</p>
+                    </div>
+                    <div class="item-type">Image</div>
+                </div>
+                
+                <div class="gallery-item" data-type="image">
+                    <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Campus view">
+                    <div class="item-overlay">
+                        <h3>Campus View</h3>
+                        <p>Beautiful scenery of Summit University Offa</p>
+                    </div>
+                    <div class="item-type">Image</div>
+                </div>
+                
+                <div class="gallery-item" data-type="image">
+                    <img src="https://images.unsplash.com/photo-1527525443983-6e60c75fff46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1185&q=80" alt="Islamic decoration">
+                    <div class="item-overlay">
+                        <h3>Islamic Decor</h3>
+                        <p>Beautiful Islamic patterns and designs</p>
+                    </div>
+                    <div class="item-type">Image</div>
+                </div>
+                
+                <div class="gallery-item" data-type="image">
+                    <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Group photo">
+                    <div class="item-overlay">
+                        <h3>MSSN Family</h3>
+                        <p>Our wonderful MSSN members together</p>
+                    </div>
+                    <div class="item-type">Image</div>
+                </div>
+                
+                <div class="gallery-item" data-type="image">
+                    <img src="https://images.unsplash.com/photo-1559054663-e8d23213f55c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Islamic event">
+                    <div class="item-overlay">
+                        <h3>Eid Celebration</h3>
+                        <p>Joyous Eid gathering with students</p>
+                    </div>
+                    <div class="item-type">Image</div>
+                </div>
+                
+                <div class="gallery-item" data-type="image">
+                    <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Islamic architecture">
+                    <div class="item-overlay">
+                        <h3>Islamic Architecture</h3>
+                        <p>Beautiful design elements in our prayer space</p>
+                    </div>
+                    <div class="item-type">Image</div>
+                </div>
+                
+                <!-- Videos -->
+                <div class="gallery-item" data-type="video">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Video thumbnail">
+                    </div>
+                    <div class="item-overlay">
+                        <h3>Ramadan Reflections</h3>
+                        <p>Students share their Ramadan experiences</p>
+                    </div>
+                    <div class="item-type">Video</div>
+                </div>
+                
+                <div class="gallery-item" data-type="video">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1587132135057-bc3c0e6c2c98?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Video thumbnail">
+                    </div>
+                    <div class="item-overlay">
+                        <h3>Quran Recitation</h3>
+                        <p>Beautiful recitation by our students</p>
+                    </div>
+                    <div class="item-type">Video</div>
+                </div>
+                
+                <div class="gallery-item" data-type="video">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1511632765481-2d5d5d28b86d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Video thumbnail">
+                    </div>
+                    <div class="item-overlay">
+                        <h3>Community Service Day</h3>
+                        <p>Highlights from our community outreach</p>
+                    </div>
+                    <div class="item-type">Video</div>
+                </div>
+                
+                <div class="gallery-item" data-type="video">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1565689228866-1f6a7a6d4a6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Video thumbnail">
+                    </div>
+                    <div class="item-overlay">
+                        <h3>Annual Conference</h3>
+                        <p>Highlights from our biggest event of the year</p>
+                    </div>
+                    <div class="item-type">Video</div>
+                </div>
+                
+                <div class="gallery-item" data-type="video">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1559028015-c12369d2d1e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Video thumbnail">
+                    </div>
+                    <div class="item-overlay">
+                        <h3>Charity Initiative</h3>
+                        <p>Documentary on our charity programs</p>
+                    </div>
+                    <div class="item-type">Video</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <button class="lightbox-nav lightbox-next" id="lightboxNext">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        <div class="lightbox-content" id="lightboxContent">
+            <!-- Content will be inserted here by JavaScript -->
+        </div>
+        
+        <div class="lightbox-counter" id="lightboxCounter">
+            <span id="currentItem">1</span> / <span id="totalItems">20</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <img src="https://via.placeholder.com/200x60/008000/ffffff?text=MSSN+SUMMIT" alt="MSSN Summit University Logo" class="footer-logo">
+                    <p>MSSN Summit University Offa chapter is dedicated to nurturing Muslim students spiritually, academically, and socially.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#mission">Mission</a></li>
+                        <li><a href="index.html#vision">Vision</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3 class="footer-heading">Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Summit University Offa</li>
+                        <li><i class="fas fa-envelope"></i> mssn@summituniversity.edu.ng</li>
+                        <li><i class="fas fa-phone"></i> +234 123 456 7890</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 MSSN Summit University Offa. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Gallery Filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                // Show/hide items based on filter
+                galleryItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-type') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Lightbox Functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxContent = document.getElementById('lightboxContent');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+        const currentItem = document.getElementById('currentItem');
+        const totalItems = document.getElementById('totalItems');
+        
+        let currentIndex = 0;
+        const items = Array.from(galleryItems);
+        
+        // Set total items count
+        totalItems.textContent = items.length;
+        
+        // Function to open lightbox
+        function openLightbox(index) {
+            currentIndex = index;
+            updateLightboxContent();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Function to update lightbox content
+        function updateLightboxContent() {
+            const item = items[currentIndex];
+            const type = item.getAttribute('data-type');
+            
+            // Clear previous content
+            lightboxContent.innerHTML = '';
+            
+            if (type === 'image') {
+                const img = document.createElement('img');
+                img.src = item.querySelector('img').src;
+                img.alt = item.querySelector('h3').textContent;
+                lightboxContent.appendChild(img);
+            } else if (type === 'video') {
+                const video = document.createElement('video');
+                video.src = 'https://assets.mixkit.co/videos/preview/mixkit-group-of-friends-partying-happily-4640-large.mp4'; // Placeholder video
+                video.controls = true;
+                video.autoplay = true;
+                video.muted = true;
+                lightboxContent.appendChild(video);
+            }
+            
+            // Update counter
+            currentItem.textContent = currentIndex + 1;
+        }
+        
+        // Function to close lightbox
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            
+            // Pause any playing video
+            const video = lightboxContent.querySelector('video');
+            if (video) {
+                video.pause();
+            }
+        }
+        
+        // Function to navigate to next item
+        function nextItem() {
+            currentIndex = (currentIndex + 1) % items.length;
+            updateLightboxContent();
+        }
+        
+        // Function to navigate to previous item
+        function prevItem() {
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            updateLightboxContent();
+        }
+        
+        // Add click event to gallery items
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                openLightbox(index);
+            });
+        });
+        
+        // Lightbox controls
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxPrev.addEventListener('click', prevItem);
+        lightboxNext.addEventListener('click', nextItem);
+        
+        // Close lightbox when clicking on the backdrop
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            
+            switch(e.key) {
+                case 'Escape':
+                    closeLightbox();
+                    break;
+                case 'ArrowLeft':
+                    prevItem();
+                    break;
+                case 'ArrowRight':
+                    nextItem();
+                    break;
+            }
+        });
+        
+        // Touch swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        lightboxContent.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        lightboxContent.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            
+            if (touchEndX < touchStartX - swipeThreshold) {
+                // Swipe left - next item
+                nextItem();
+            }
+            
+            if (touchEndX > touchStartX + swipeThreshold) {
+                // Swipe right - previous item
+                prevItem();
+            }
+        }
+        
+        // Add shadow to header on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.08)';
+            }
+        });
+    </script>
+</body>
+</html>

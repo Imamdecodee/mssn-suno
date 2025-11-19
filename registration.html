@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - MSSN Summit University Offa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #008000;
+            --primary-green-light: #e6f2e6;
+            --white: #ffffff;
+            --light-gold: #f5f5dc;
+            --light-gray: #f8f8f8;
+            --dark-gray: #333333;
+            --darker-gray: #1a1a1a;
+            --border-color: #ddd;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--light-gray);
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-green);
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-family: inherit;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-green);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #006600;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: var(--light-gold);
+            color: var(--dark-gray);
+        }
+
+        .btn-secondary:hover {
+            background-color: #e5e5c3;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        .section {
+            padding: 2rem 0;
+            flex: 1;
+        }
+
+        /* Header and Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            margin-right: 1rem;
+        }
+
+        .back-home {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .back-home:hover {
+            color: var(--primary-green);
+        }
+
+        /* Registration Form Section */
+        .registration-section {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 2rem 0 4rem;
+        }
+
+        .registration-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 800px;
+            overflow: hidden;
+        }
+
+        .registration-header {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .registration-header h1 {
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .registration-header p {
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+
+        .registration-body {
+            padding: 2rem;
+        }
+
+        /* Form Styles */
+        .form-section {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .form-section:last-of-type {
+            border-bottom: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -0.75rem;
+        }
+
+        .form-group {
+            flex: 1 0 300px;
+            margin: 0 0.75rem 1.5rem;
+            position: relative;
+        }
+
+        .form-group.full-width {
+            flex: 1 0 100%;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark-gray);
+        }
+
+        .required:after {
+            content: ' *';
+            color: #e74c3c;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--white);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(0, 128, 0, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+
+        .form-hint {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .form-actions .btn {
+            min-width: 150px;
+        }
+
+        /* Success Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            animation: modalFadeIn 0.3s ease;
+            text-align: center;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 1.5rem;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-icon {
+            font-size: 4rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-actions {
+            margin-top: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 3rem 0 1.5rem;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-heading {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-heading:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-green);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-green);
+            transform: translateY(-3px);
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--light-gold);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-group {
+                flex: 1 0 100%;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
+            
+            .form-actions .btn {
+                width: 100%;
+            }
+            
+            .registration-body {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: 1rem 0;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
+            
+            .registration-header {
+                padding: 1.5rem;
+            }
+            
+            .registration-body {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <img src="https://via.placeholder.com/150x50/008000/ffffff?text=SUMMIT+UNIV" alt="Summit University Logo" class="logo">
+                <img src="https://via.placeholder.com/150x50/ffffff/008000?text=MSSN" alt="MSSN Logo" class="logo">
+            </div>
+            
+            <a href="index.html" class="back-home">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Home</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Registration Section -->
+    <section class="section registration-section">
+        <div class="container">
+            <div class="registration-card">
+                <div class="registration-header">
+                    <h1>Madrasah Registration</h1>
+                    <p>Join MSSN Summit University Offa Madrasah Program</p>
+                </div>
+                
+                <div class="registration-body">
+                    <form id="registrationForm" action="https://formsubmit.co/theilmnexus@gmail.com" method="POST">
+                        <!-- Hidden FormSubmit fields -->
+                        <input type="hidden" name="_subject" value="New Madrasah Registration">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        
+                        <!-- Student Information Section -->
+                        <div class="form-section">
+                            <h2>Student Information</h2>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="fullName" class="form-label required">Full Name</label>
+                                    <input type="text" id="fullName" name="fullName" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="matricNumber" class="form-label required">Matric Number</label>
+                                    <input type="text" id="matricNumber" name="matricNumber" class="form-control" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email" class="form-label required">Email Address</label>
+                                    <input type="email" id="email" name="email" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phone" class="form-label required">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" class="form-control" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="dob" class="form-label required">Date of Birth</label>
+                                    <input type="date" id="dob" name="dob" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="gender" class="form-label required">Gender</label>
+                                    <select id="gender" name="gender" class="form-control" required>
+                                        <option value="" selected disabled>Select Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="faculty" class="form-label required">Faculty / College</label>
+                                    <select id="faculty" name="faculty" class="form-control" required>
+                                        <option value="" selected disabled>Select Faculty</option>
+                                        <option value="science">Faculty of Science</option>
+                                        <option value="arts">Faculty of Arts</option>
+                                        <option value="education">Faculty of Education</option>
+                                        <option value="social-science">Faculty of Social Sciences</option>
+                                        <option value="management">Faculty of Management Sciences</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="department" class="form-label required">Department</label>
+                                    <input type="text" id="department" name="department" class="form-control" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="level" class="form-label required">Level</label>
+                                    <select id="level" name="level" class="form-control" required>
+                                        <option value="" selected disabled>Select Level</option>
+                                        <option value="100">100 Level</option>
+                                        <option value="200">200 Level</option>
+                                        <option value="300">300 Level</option>
+                                        <option value="400">400 Level</option>
+                                        <option value="500">500 Level</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="state" class="form-label required">State of Origin</label>
+                                    <input type="text" id="state" name="state" class="form-control" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="lga" class="form-label required">Local Government Area</label>
+                                    <input type="text" id="lga" name="lga" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="address" class="form-label required">Residential Address</label>
+                                    <input type="text" id="address" name="address" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Parent/Emergency Contact Section -->
+                        <div class="form-section">
+                            <h2>Parent/Emergency Contact</h2>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="parentName" class="form-label required">Parent/Guardian Name</label>
+                                    <input type="text" id="parentName" name="parentName" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="parentPhone" class="form-label required">Parent/Guardian Phone Number</label>
+                                    <input type="tel" id="parentPhone" name="parentPhone" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Madrasah Details Section -->
+                        <div class="form-section">
+                            <h2>Madrasah Details</h2>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="category" class="form-label required">Category</label>
+                                    <select id="category" name="category" class="form-control" required>
+                                        <option value="" selected disabled>Select Category</option>
+                                        <option value="beginner">Beginner</option>
+                                        <option value="intermediate">Intermediate</option>
+                                        <option value="advanced">Advanced</option>
+                                    </select>
+                                    <div class="form-hint">
+                                        <strong>Beginner:</strong> No prior knowledge of Arabic/Quran<br>
+                                        <strong>Intermediate:</strong> Basic knowledge of Arabic/Quran<br>
+                                        <strong>Advanced:</strong> Fluent in reading Quran with Tajweed
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group full-width">
+                                    <label for="motivation" class="form-label required">Why do you want to join the Madrasah?</label>
+                                    <textarea id="motivation" name="motivation" class="form-control" placeholder="Please explain your reasons for joining the MSSN Madrasah program..." required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Form Actions -->
+                        <div class="form-actions">
+                            <a href="index.html" class="btn btn-secondary">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Submit Registration</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Registration Successful</h3>
+            </div>
+            <div class="modal-body">
+                <div class="modal-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h4>Thank You for Registering!</h4>
+                <p>Your registration for the MSSN Madrasah has been submitted successfully. We will contact you shortly with further details.</p>
+                <div class="modal-actions">
+                    <a href="index.html" class="btn btn-primary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <img src="https://via.placeholder.com/200x60/008000/ffffff?text=MSSN+SUMMIT" alt="MSSN Summit University Logo" class="footer-logo">
+                    <p>MSSN Summit University Offa chapter is dedicated to nurturing Muslim students spiritually, academically, and socially.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#mission">Mission</a></li>
+                        <li><a href="index.html#vision">Vision</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3 class="footer-heading">Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Summit University Offa</li>
+                        <li><i class="fas fa-envelope"></i> mssn@summituniversity.edu.ng</li>
+                        <li><i class="fas fa-phone"></i> +234 123 456 7890</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 MSSN Summit University Offa. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form Validation and Submission
+        const registrationForm = document.getElementById('registrationForm');
+        const successModal = document.getElementById('successModal');
+        
+        // Form validation function
+        function validateForm() {
+            const requiredFields = registrationForm.querySelectorAll('[required]');
+            let isValid = true;
+            
+            // Check all required fields
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.borderColor = '#e74c3c';
+                } else {
+                    field.style.borderColor = '';
+                }
+            });
+            
+            // Validate email format
+            const emailField = document.getElementById('email');
+            if (emailField.value && !isValidEmail(emailField.value)) {
+                isValid = false;
+                emailField.style.borderColor = '#e74c3c';
+                alert('Please enter a valid email address');
+            }
+            
+            // Validate phone number (basic validation)
+            const phoneField = document.getElementById('phone');
+            if (phoneField.value && !isValidPhone(phoneField.value)) {
+                isValid = false;
+                phoneField.style.borderColor = '#e74c3c';
+                alert('Please enter a valid phone number');
+            }
+            
+            return isValid;
+        }
+        
+        // Email validation helper
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        // Phone validation helper (basic)
+        function isValidPhone(phone) {
+            const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
+            return phoneRegex.test(phone);
+        }
+        
+        // Show success modal
+        function showSuccessModal() {
+            successModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Close modal when clicking outside
+        successModal.addEventListener('click', (e) => {
+            if (e.target === successModal) {
+                successModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Form submission handler
+        registrationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            if (validateForm()) {
+                // In a real implementation, we would send the form data to the server
+                // For this example, we'll simulate a successful submission
+                
+                // Show success modal
+                showSuccessModal();
+                
+                // In a real implementation, you would submit the form here
+                // registrationForm.submit();
+                
+                // Reset form after successful submission
+                setTimeout(() => {
+                    registrationForm.reset();
+                }, 1000);
+            } else {
+                alert('Please fill in all required fields correctly.');
+            }
+        });
+        
+        // Add shadow to header on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.08)';
+            }
+        });
+    </script>
+</body>
+</html>
