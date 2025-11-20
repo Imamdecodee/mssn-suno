@@ -287,6 +287,66 @@
             margin-bottom: 1.5rem;
         }
 
+        /* Activities Section */
+        .activities-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .activity-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .activity-header {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .activity-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .activity-day {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .activity-details {
+            padding: 1.5rem;
+        }
+
+        .activity-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: var(--primary-green);
+        }
+
         /* Gallery Section */
         .gallery-container {
             display: grid;
@@ -662,13 +722,16 @@
                     <a href="#vision" class="nav-link">Vision</a>
                 </li>
                 <li class="nav-item">
+                    <a href="#activities" class="nav-link">Activities</a>
+                </li>
+                <li class="nav-item">
                     <a href="#gallery" class="nav-link">Gallery</a>
                 </li>
                 <li class="nav-item">
                     <a href="#contact" class="nav-link">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a href="./registration.html" class="nav-link btn btn-primary">Register</a>
+                    <a href="#" class="nav-link btn btn-primary" id="registerBtn">Register</a>
                 </li>
             </nav>
         </div>
@@ -682,7 +745,7 @@
                 <p>Fostering Islamic values and academic excellence in a nurturing environment. Join our community dedicated to faith, knowledge, and service.</p>
                 <div class="hero-buttons">
                     <button class="btn btn-primary" id="payDueBtn">Pay MSSN Due</button>
-                    <button class="btn btn-secondary"> <a href="./registration.html">Register for Madrasah</a></button>
+                    <button class="btn btn-secondary" id="madrasahBtn">Register for Madrasah</button>
                 </div>
             </div>
         </div>
@@ -748,8 +811,124 @@
         </div>
     </section>
 
+    <!-- Activities Section -->
+    <section class="section section-light" id="activities">
+        <div class="container">
+            <h2>Weekly Activities</h2>
+            <div class="activities-container">
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <h3 class="activity-name">Usrah Program</h3>
+                        <p class="activity-day">Thursday</p>
+                    </div>
+                    <div class="activity-details">
+                        <div class="activity-info">
+                            <div class="activity-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4>Time</h4>
+                                <p>4:30 PM</p>
+                            </div>
+                        </div>
+                        <div class="activity-info">
+                            <div class="activity-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Venue</h4>
+                                <p>Adult Hall</p>
+                            </div>
+                        </div>
+                        <div class="activity-info">
+                            <div class="activity-icon">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <div>
+                                <h4>Description</h4>
+                                <p>Family-style gatherings for spiritual development and Islamic knowledge sharing in small groups.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <h3 class="activity-name">IEC Program</h3>
+                        <p class="activity-day">Sunday</p>
+                    </div>
+                    <div class="activity-details">
+                        <div class="activity-info">
+                            <div class="activity-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4>Time</h4>
+                                <p>10:00 AM</p>
+                            </div>
+                        </div>
+                        <div class="activity-info">
+                            <div class="activity-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Venue</h4>
+                                <p>Adult Hall</p>
+                            </div>
+                        </div>
+                        <div class="activity-info">
+                            <div class="activity-icon">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <div>
+                                <h4>Description</h4>
+                                <p>Islamic Educational Classes focusing on Quranic studies, Hadith, and Islamic jurisprudence.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <h3 class="activity-name">Madrasah</h3>
+                        <p class="activity-day">Saturday & Sunday</p>
+                    </div>
+                    <div class="activity-details">
+                        <div class="activity-info">
+                            <div class="activity-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4>Time</h4>
+                                <p>4:30 PM</p>
+                            </div>
+                        </div>
+                        <div class="activity-info">
+                            <div class="activity-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Venue</h4>
+                                <p>School Mosques</p>
+                            </div>
+                        </div>
+                        <div class="activity-info">
+                            <div class="activity-icon">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <div>
+                                <h4>Description</h4>
+                                <p>Weekend Islamic school for children and youth focusing on Quran recitation, Arabic, and Islamic studies.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Gallery Section -->
-    <section class="section section-light" id="gallery">
+    <section class="section" id="gallery">
         <div class="container">
             <h2>Gallery</h2>
             <div class="gallery-container">
@@ -773,7 +952,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="section" id="contact">
+    <section class="section section-light" id="contact">
         <div class="container">
             <h2>Contact Us</h2>
             <div class="contact-container">
@@ -784,6 +963,9 @@
                         </div>
                         <div class="form-group">
                             <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="subject" placeholder="Subject" required>
                         </div>
                         <div class="form-group">
                             <textarea class="form-control" id="message" placeholder="Your Message" required></textarea>
@@ -819,6 +1001,15 @@
                             <p>+234-48733713</p>
                         </div>
                     </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h3>Office Hours</h3>
+                            <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -852,6 +1043,7 @@
                         <li><a href="#home">Home</a></li>
                         <li><a href="#mission">Mission</a></li>
                         <li><a href="#vision">Vision</a></li>
+                        <li><a href="#activities">Activities</a></li>
                         <li><a href="#gallery">Gallery</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
@@ -908,7 +1100,7 @@
                         </div>
                         <div class="account-item">
                             <span>Account Name:</span>
-                            <span>Muslim Student society of  Nigeria <br>  Suno Branch</span>
+                            <span>Muslim Student society of Nigeria <br>  Suno Branch</span>
                         </div>
                         <div class="account-item">
                             <span>Account Number:</span>
@@ -922,6 +1114,44 @@
                         This modal will close in <span id="countdown">60</span> seconds
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Madrasah Registration Modal -->
+    <div class="modal" id="madrasahModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Register for Madrasah</h3>
+                <button class="close-modal" id="closeMadrasahModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="madrasahForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="studentName" placeholder="Student Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" id="studentAge" placeholder="Age" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="parentName" placeholder="Parent/Guardian Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" id="parentPhone" placeholder="Parent/Guardian Phone" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="parentEmail" placeholder="Parent/Guardian Email" required>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="classLevel" required>
+                            <option value="" disabled selected>Select Class Level</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Registration</button>
+                </form>
             </div>
         </div>
     </div>
@@ -1032,7 +1262,42 @@
             countdownElement.textContent = secondsLeft;
         }
         
-        // Contact form validation
+        // Madrasah Registration Modal
+        const madrasahBtn = document.getElementById('madrasahBtn');
+        const madrasahModal = document.getElementById('madrasahModal');
+        const closeMadrasahModal = document.getElementById('closeMadrasahModal');
+        const madrasahForm = document.getElementById('madrasahForm');
+        
+        // Open Madrasah modal
+        madrasahBtn.addEventListener('click', () => {
+            madrasahModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // Close Madrasah modal
+        closeMadrasahModal.addEventListener('click', () => {
+            madrasahModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close Madrasah modal when clicking outside
+        madrasahModal.addEventListener('click', (e) => {
+            if (e.target === madrasahModal) {
+                madrasahModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Madrasah form submission
+        madrasahForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for registering for Madrasah! We will contact you shortly.');
+            madrasahForm.reset();
+            madrasahModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Contact form submission
         const contactForm = document.getElementById('contactForm');
         
         contactForm.addEventListener('submit', (e) => {
@@ -1040,9 +1305,12 @@
             
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value;
             
-            if (name && email && message) {
+            if (name && email && subject && message) {
+                // In a real implementation, you would send this data to a server
+                // For now, we'll just show a success message
                 alert('Thank you for your message! We will get back to you soon.');
                 contactForm.reset();
             } else {
@@ -1058,6 +1326,12 @@
             } else {
                 header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.08)';
             }
+        });
+        
+        // Register button functionality
+        const registerBtn = document.getElementById('registerBtn');
+        registerBtn.addEventListener('click', () => {
+            alert('Registration portal will be available soon!');
         });
     </script>
 </body>
